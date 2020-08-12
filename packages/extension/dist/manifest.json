@@ -7,5 +7,6 @@
   "permissions": ["webNavigation", "tabs", "*://*/*"],
   "background": {
     "scripts": ["background.js"]
-  }
+  },
+  "web_accessible_resources": ["v1/index.js"]
 }
