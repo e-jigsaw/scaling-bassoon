@@ -4,9 +4,8 @@
   "description": "",
   "version": "0.0.1",
   "author": "Takaya Kobayashi (https://kbys.tk/y)",
-  "permissions": [],
-  "content_scripts": [{
-    "matches": ["*://*/*"],
-    "js": ["content.js"]
-  }]
+  "permissions": ["webNavigation", "tabs", "*://*/*"],
+  "background": {
+    "scripts": ["background.js"]
+  }
 }
