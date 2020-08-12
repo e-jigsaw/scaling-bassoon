@@ -1,11 +1,21 @@
+let sites = []
+const main = async () => {
+  const res = await fetch('http://localhost:3000')
+  const json = await res.json()
+  sites = json.sites
+}
+main()
+
 chrome.webNavigation.onCompleted.addListener((detail) => {
-  if (/^https:\/\/ja.wikipedia.org/) {
-    chrome.tabs.executeScript(detail.tabId, {
-      code: `
-        const script = document.createElement('script')
-        script.src = '${chrome.extension.getURL('v1/index.js')}'
-        document.body.appendChild(script)
-      `
-    })
-  }
+  sites.forEach(site => {
+    if (new RegExp(site.regex).test(detail.url)) {
+      chrome.tabs.executeScript(detail.tabId, {
+        code: `
+          const script = document.createElement('script')
+          script.src = '${chrome.extension.getURL(`${site.version}/index.js`)}'
+          document.body.appendChild(script)
+        `
+      })
+    }
+  })
 })
