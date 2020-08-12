@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "name": "server",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^9.3.4"
+  },
+  "scripts": {
+    "start": "micro"
+  }
+}
