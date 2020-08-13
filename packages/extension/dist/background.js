@@ -15,3 +15,12 @@ chrome.webNavigation.onCompleted.addListener((detail) => {
     }
   })
 })
+
+chrome.runtime.onMessage.addListener((message, sender, send) => {
+  switch (message) {
+    case 'scaling-bassoon:clicked': {
+      chrome.tabs.create({})
+      break
+    }
+  }
+})
