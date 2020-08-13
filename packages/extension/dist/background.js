@@ -10,11 +10,7 @@ chrome.webNavigation.onCompleted.addListener((detail) => {
   sites.forEach(site => {
     if (new RegExp(site.regex).test(detail.url)) {
       chrome.tabs.executeScript(detail.tabId, {
-        code: `
-          const script = document.createElement('script')
-          script.src = '${chrome.extension.getURL(`${site.version}/index.js`)}'
-          document.body.appendChild(script)
-        `
+        file: `${site.version}/index.js`
       })
     }
   })
